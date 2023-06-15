@@ -144,12 +144,14 @@
         const apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&q="
 
         const getSearchedWeather = (city) => {
-            fetch(`${apiUrl}${city}&appid=${apiKey}`)
-            .then(response => response.json())
-            .then(json => {
+            try {
+                const response = await fetch(`${apiUrl}${city}&appid=${apiKey}`)
+                const json = await response.json()
                 getWeather(json)
                 console.log(json)
-            })
+            } catch (err) {
+                console.log(err)
+            }
         }
         const getWeather = (char) => {
             tempEL.innerHTML = char.main.temp + "°C"
