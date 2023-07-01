@@ -4,6 +4,7 @@ let tempEL = document.querySelector(".temp")
 let cityEL = document.querySelector(".city")
 let humidityEL = document.querySelector(".Humidity")
 let windEL = document.querySelector(".wind")
+let countryEL = document.querySelector('.country')
 
 const apiKey = "1f1602912359a777255e9879b11d14ca"
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&q="
@@ -23,6 +24,7 @@ const getWeather = (char) => {
     cityEL.innerHTML = char.name
     humidityEL.innerHTML = char.main.humidity + "%";
     windEL.innerHTML = char.wind.speed + " km/h"
+    countryEL.innerHTML = char.sys.country
 }
 searchBtn.addEventListener("click", () => {
     getSearchedWeather(inputtextEL.value)
